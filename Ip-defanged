@@ -1,0 +1,48 @@
+#include <iostream>
+#include <queue>
+#include <string>
+
+// this program defangs an ip address
+void defanged(std::string s)
+{
+    // we create a queue to store each character
+    std::queue<char> ip;
+    int l = s.length();
+    int i = 0;
+
+    // checking each values of the ip address to retrieve the period
+    while (i < l)
+    {
+        // when we get the period, we add the brackets
+        if (s.at(i) == '.')
+        {
+            ip.push('[');
+            ip.push(s.at(i));
+            ip.push(']');
+        }
+        else
+        {
+            // this is to push normal ip char into the queue
+            ip.push(s.at(i));
+        }
+        i++;
+    }
+
+    // here we print the queue values by emprying the queu
+
+    while (!ip.empty())
+    {
+        std::cout << ip.front();
+        ip.pop();
+    }
+
+}
+
+
+
+int main()
+{
+    // testing defanged
+    defanged("255.100.50.0");
+}
+

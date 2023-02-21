@@ -1,0 +1,43 @@
+
+
+#include <iostream>
+#include <queue>
+#include <string>
+
+
+// this is a program to remove vowels from a string
+void vowelrem(std::string s)
+{
+    std::queue<char> line;
+    int l = s.length();
+    int i = 0;
+
+    // here we check to make sure we don't move any of the values into the queue
+    while (i < l)
+    {
+        if (s.at(i) != 'a' && s.at(i) != 'e' && s.at(i) != 'i' && s.at(i) != 'u' && s.at(i) != 'o')
+        {
+            // we push the consonant into the queue
+            line.push(s.at(i));
+        }
+
+        i++;
+    }
+    std::cout << "output: ";
+    // here we print the string by emptying the queue
+    while (!line.empty())
+    {
+        std::cout << line.front();
+        line.pop();
+    }
+    std::cout << std::endl;
+
+}
+
+
+int main()
+{
+    // testing defanged
+    vowelrem("stackoverflowisacommunityforcoders");
+}
+
